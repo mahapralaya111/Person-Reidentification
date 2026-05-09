@@ -1,0 +1,32 @@
+# 推理配置文件
+# 使用方式: python main.py inference --config configs/inference.yaml
+
+# 模型
+model_path: "./checkpoints/best_model.pth"
+backbone: "resnet50"
+num_classes: 751
+
+# 设备
+device: "auto"  # auto, cpu, cuda
+
+# 特征提取
+batch_size: 32
+normalize_features: true
+
+# 搜索
+mode: "search"  # feature, search, gallery
+top_k: 10
+threshold: 0.2
+use_reranking: true
+
+# 重排序参数
+reranking_k1: 20
+reranking_k2: 6
+reranking_lambda: 0.3
+
+# 输出
+output: "./output"
+
+# 缓存
+use_feature_cache: true
+cache_dir: "./cache/features"

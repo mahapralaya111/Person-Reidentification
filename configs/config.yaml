@@ -1,0 +1,112 @@
+# 应用配置
+app:
+  name: "person-reid-system"
+  version: "2.0.0"
+  debug: false
+  log_level: "INFO"
+  log_dir: "./logs"
+  cache_dir: "./cache"
+  checkpoint_dir: "./checkpoints"
+
+# 模型配置
+model:
+  backbone: "osnet"        # resnet50, osnet, agw, resnet_ibn, pcb
+  pretrained: true
+  feat_dim: 512
+  dropout_rate: 0.5
+  modality: "both"         # visible, infrared, both
+  use_attention: true
+  attention_type: "non_local"
+  use_feature_fusion: true
+  fusion_method: "concat"  # concat, add, attention
+
+# 训练配置
+training:
+  epochs: 100
+  learning_rate: 0.0001
+  batch_size: 64
+  weight_decay: 0.0005
+  optimizer: "adam"        # adam, sgd, adamw
+  loss_type: "circle"      # cross_entropy, triplet, circle
+  triplet_margin: 0.3
+  circle_margin: 0.25
+  circle_scale: 32
+  use_warmup: true
+  warmup_epochs: 5
+  use_cosine_annealing: true
+  min_learning_rate: 0.000001
+  use_gradient_clip: true
+  gradient_clip_norm: 1.0
+  use_amp: true
+  early_stopping_patience: 20
+  log_interval: 20
+  eval_interval: 5
+
+# 数据配置
+data:
+  dataset: "Market1501"
+  data_root: "./data"
+  image_size: [256, 128]
+  crop_size: [224, 112]
+  mean: [0.485, 0.456, 0.406]
+  std: [0.229, 0.224, 0.225]
+  use_random_horizontal_flip: true
+  use_random_crop: true
+  use_color_jitter: true
+  use_random_erasing: true
+  use_harsh_augmentation: true
+  harsh_augmentation_types:
+    - "smoke"
+    - "fog"
+    - "rain"
+    - "motion_blur"
+    - "low_light"
+    - "noise"
+  harsh_augmentation_prob: 0.3
+  num_workers: 4
+  pin_memory: true
+
+# 推理配置
+inference:
+  model_path: "./checkpoints/best_model.pth"
+  batch_size: 32
+  device: "auto"           # auto, cpu, cuda
+  normalize_features: true
+  use_fp16: false
+  search_top_k: 10
+  similarity_threshold: 0.4
+  use_reranking: true
+  reranking_k1: 20
+  reranking_k2: 6
+  reranking_lambda: 0.3
+  use_feature_cache: true
+
+# Web界面配置
+web:
+  host: "0.0.0.0"
+  port: 8501
+  page_title: "行人重识别系统"
+  enable_file_upload: true
+  enable_batch_processing: true
+  max_upload_size_mb: 100
+  show_confidence_scores: true
+  show_feature_visualization: true
+
+# API服务配置
+api:
+  host: "0.0.0.0"
+  port: 5000
+  api_prefix: "/api/v1"
+  enable_cors: true
+  enable_auth: false
+  enable_swagger: true
+  rate_limit: 100  # 每分钟请求数
+
+# 日志配置
+logging:
+  level: "INFO"
+  console_output: true
+  file_output: true
+  max_file_size_mb: 100
+  backup_count: 5
+  json_format: false

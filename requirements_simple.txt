@@ -1,0 +1,17 @@
+# 抗恶劣环境行人重识别系统 - 精简依赖（无版本号，避免冲突）
+# 安装: pip install -r requirements_simple.txt
+torch
+torchvision
+opencv-python
+Pillow
+numpy
+scipy
+matplotlib
+scikit-learn
+streamlit
+flask
+flask-cors
+requests
+tqdm
+pyyaml
+ultralytics

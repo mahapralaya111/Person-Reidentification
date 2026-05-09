@@ -1,0 +1,53 @@
+# 权重与模型文件
+*.pth
+*.pt
+*.onnx
+*.ckpt
+checkpoints/
+
+# 数据集
+data/
+
+# 特征缓存
+*.npy
+*.npz
+
+# 私人底库照片
+rescue_gallery*/
+characteristic/
+
+# 视频
+*.mp4
+*.avi
+*.mkv
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+
+# 虚拟环境
+venv/
+env/
+gpu_env/
+.conda/
+
+# 日志与临时文件
+logs/
+*.log
+output/
+results/tmp/
+
+# IDE / 助手
+.idea/
+.vscode/
+.codebuddy/
+.claude/
+.cursor/
+
+# 系统文件
+.DS_Store
+Thumbs.db

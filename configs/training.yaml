@@ -1,0 +1,42 @@
+# 训练配置文件
+# 使用方式: python main.py train --config configs/training.yaml
+
+# 训练参数
+epochs: 100
+batch_size: 64
+learning_rate: 0.0001
+weight_decay: 0.0005
+margin: 0.3
+feat_dim: 512
+
+# 骨干网络
+backbone: "osnet"
+
+# 损失函数
+use_circle_loss: true
+
+# 学习率调度
+use_cosine_annealing: true
+
+# 数据增强
+use_weather_aug: true
+use_random_erasing: true
+use_infrared_aug: false
+use_pose_aug: false
+use_viewpoint_aug: false
+
+# 训练策略
+use_amp: true
+gradient_clip_norm: 1.0
+early_stopping_patience: 20
+
+# 数据
+data_dir: "./data"
+dataset: "Market-1501"
+download: false
+auto_demo: false
+
+# 保存
+save_dir: "./checkpoints"
+save_best_only: true
+save_every_n_epochs: 10
