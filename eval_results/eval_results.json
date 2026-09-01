@@ -1,0 +1,11 @@
+{
+  "model": "best_model.pth",
+  "gallery": "rescue_gallery_augmented",
+  "num_persons": 2,
+  "num_queries": 212,
+  "rank1": 97.64,
+  "rank5": 100.0,
+  "mAP": 92.62,
+  "same_person_sim_mean": 0.892,
+  "diff_person_sim_mean": 0.826
+}
